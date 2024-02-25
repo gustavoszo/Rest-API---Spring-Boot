@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.minhapi.parkapi.entity.ClienteVaga;
+import com.minhapi.parkapi.repository.projection.ClienteVagaProjection;
 
 public interface ClienteVagaRepository extends JpaRepository<ClienteVaga, Long> {
 
@@ -14,6 +15,8 @@ public interface ClienteVagaRepository extends JpaRepository<ClienteVaga, Long> 
 
     Long countByClienteCpfAndDataSaidaIsNotNull(String cpf);
 
-    Page<ClienteVagaProjection> findAllPageableByClienteCpf(String cpf, Pageable pageable);
+    Page<ClienteVagaProjection> findAllByClienteCpf(String cpf, Pageable pageable);
+
+    Page<ClienteVagaProjection> findAllByClienteUsuarioId(Long id);
     
 }

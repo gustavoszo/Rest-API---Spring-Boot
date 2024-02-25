@@ -42,6 +42,7 @@ public class ClienteService{
     }
 
     public Cliente buscarPorUsuarioId(Long id) {
+        // Campo usuario do cliente
         return clienteRepository.findByUsuarioId(id);
     }
 

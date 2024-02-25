@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.minhapi.parkapi.entity.ClienteVaga;
 import com.minhapi.parkapi.exception.EntityNotFoundException;
 import com.minhapi.parkapi.repository.ClienteVagaRepository;
+import com.minhapi.parkapi.repository.projection.ClienteVagaProjection;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,7 +37,12 @@ public class ClienteVagaService {
     }
 
     public Page<ClienteVagaProjection> buscarPorCpf(String cpf, Pageable pageable) {
-        return repository.findAllPageableByClienteCpf(cpf, pageable);
+        return repository.findAllByClienteCpf(cpf, pageable);
+    }
+
+    public Page<ClienteVagaProjection> buscarTodosPorUsuarioId(Long id, Pageable pageable) {
+        // Campo Cliente do ClienteVaga
+        return repository.findAllByClienteUsuarioId(id);
     } 
 
 }
